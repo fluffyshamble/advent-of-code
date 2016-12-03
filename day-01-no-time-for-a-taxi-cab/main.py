@@ -2,7 +2,7 @@ import glob
 
 def parse_steps(filename):
     text_file = open(filename, "r")
-    output = text_file.read().split(',')
+    output = text_file.read().split(', ')
     return output
 
 
@@ -27,7 +27,6 @@ def move(d, a, f, p):
         p[1] -= a
     elif f == 3:
         p[0] -= a
-    print("You are facing %s with pos %s") %(f, p)
     return f
 
 
@@ -36,10 +35,9 @@ def how_far(position):
     return distance
 
 
-#input = "directions.txt"
+input = "directions.txt"
 
-#steps = parse_direction(input)
-steps = ['R5', 'L5', 'R5', 'R3']
+steps = parse_steps(input)
 pointing = 0
 pos = [0,0]
 
@@ -47,7 +45,6 @@ for step in steps:
     direction = step[0]
     amount = int(step[1:])
     pointing = move(direction, amount, pointing, pos)
-    print("pointing = %s" %pointing)
 
 distance  = how_far(pos)
 
