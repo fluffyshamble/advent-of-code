@@ -1,5 +1,3 @@
-import glob
-
 def parse_steps(filename):
     text_file = open(filename, "r")
     output = text_file.read().split(', ')
@@ -48,7 +46,7 @@ for step in steps:
 
 distance  = how_far(pos)
 
-print "Easter Bunny HQ is %s blocks away" % distance
+print "Your position is %s, and Easter Bunny HQ is %s blocks away" %(pos,distance)
 
 
 
