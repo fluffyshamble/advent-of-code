@@ -21,6 +21,7 @@ def door_one(door_id):
 
     print "DOOR ONE PASSCODE: %s" % passcode
 
+
 def door_two(door_id):
     index = 0
     passcode = ['_',
@@ -31,7 +32,6 @@ def door_two(door_id):
                 '_',
                 '_',
                 '_',]
-    hashed_input = ""
 
     while "_" in passcode:
         to_hash = door_id + str(index)
