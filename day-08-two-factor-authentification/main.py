@@ -8,7 +8,7 @@ def create_screen(width, height):
     for i in range(0, height):
         new_line = []
         for j in range(0, width):
-            new_line.append(".")
+            new_line.append(" ")
         screen.append(new_line)
     return screen
 
