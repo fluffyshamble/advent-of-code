@@ -35,15 +35,41 @@ def rot_row(row, rotation, width, screen):
     for i in range(0, width):
         screen[row][i] = row_to_change[(i - rotation) % width]
 
+def count_pixels(screen):
+    pixels = 0
+    for row in range(0, screen_height):
+        for column in range(0, screen_width):
+            if screen[row][column] == '#':
+                pixels += 1
+    return pixels
 
-screen_width = 50
-screen_height = 6
-cardswipe = read_file("cardswipe.txt")
 
-screen = create_screen(screen_width, screen_height)
-rect(3,2,screen)
-rot_row(1, 2, screen_width, screen)
-print_screen(screen)
+if __name__ == "__main__":
+    screen_width = 7
+    screen_height = 3
+    cardswipe = read_file("cardswipe.txt")
+
+    screen = create_screen(screen_width, screen_height)
+
+    for line in cardswipe:
+        if line.startswith("rect"):
+            dim = line.split(" ")[1].split("x")
+            rect(int(dim[0]), int(dim[1]), screen)
+
+        elif line.startswith("rotate column"):
+            translation = line.split(" ")
+            column = int(translation[2][2:])
+            rotation = int(translation[4])
+            rot_col(column, rotation, screen_height, screen)
+
+        elif line.startswith("rotate row"):
+            translation = line.split(" ")
+            row = int(translation[2][2:])
+            rotation = int(translation[4])
+            rot_row(row, rotation, screen_width, screen)
+
+    print_screen(screen)
+    print "Lit pixels = %d" % count_pixels(screen)
 
 # TODO: Parse instructions function
 # TODO: Count lit pixels
