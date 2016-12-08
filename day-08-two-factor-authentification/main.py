@@ -14,20 +14,29 @@ def print_screen(screen):
 
 
 def rect(width, height, screen):
+    for row in range(0, height):
+        for column in range(0, width):
+            screen[row][column] = '#'
+
+def rot_col(column, rotation, height, screen):
+    column_to_change = [row[column] for row in screen]
     for j in range(0, height):
-        for i in range(0, width):
-            screen[j][i] = '#'
+        screen[j][column] = column_to_change[(j - rotation) % height]
 
 
+def rot_row(row, rotation, width, screen):
+    row_to_change = [i for i in screen[row]]
+    for i in range(0, width):
+        screen[row][i] = row_to_change[(i - rotation) % width]
 
-screen_width = 6
-screen_height = 2
+
+screen_width = 50
+screen_height = 6
 
 screen = create_screen(screen_width, screen_height)
 rect(3,2,screen)
+rot_row(1, 2, screen_width, screen)
 print_screen(screen)
 
 
-
-# TODO: Create functions for each instruction type
 # TODO: Parse instructions function
