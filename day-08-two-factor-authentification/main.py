@@ -45,8 +45,8 @@ def count_pixels(screen):
 
 
 if __name__ == "__main__":
-    screen_width = 7
-    screen_height = 3
+    screen_width = 50
+    screen_height = 6
     cardswipe = read_file("cardswipe.txt")
 
     screen = create_screen(screen_width, screen_height)
