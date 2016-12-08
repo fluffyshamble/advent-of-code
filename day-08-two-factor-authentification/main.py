@@ -1,3 +1,8 @@
+def read_file(filename):
+    contents = open(filename, "r")
+    output = contents.read().split('\n')
+    return output
+
 def create_screen(width, height):
     screen = []
     for i in range(0, height):
@@ -18,6 +23,7 @@ def rect(width, height, screen):
         for column in range(0, width):
             screen[row][column] = '#'
 
+
 def rot_col(column, rotation, height, screen):
     column_to_change = [row[column] for row in screen]
     for j in range(0, height):
@@ -32,11 +38,12 @@ def rot_row(row, rotation, width, screen):
 
 screen_width = 50
 screen_height = 6
+cardswipe = read_file("cardswipe.txt")
 
 screen = create_screen(screen_width, screen_height)
 rect(3,2,screen)
 rot_row(1, 2, screen_width, screen)
 print_screen(screen)
 
-
 # TODO: Parse instructions function
+# TODO: Count lit pixels
