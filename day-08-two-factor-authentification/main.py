@@ -70,6 +70,3 @@ if __name__ == "__main__":
 
     print_screen(screen)
     print "Lit pixels = %d" % count_pixels(screen)
-
-# TODO: Parse instructions function
-# TODO: Count lit pixels
